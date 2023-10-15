@@ -1,0 +1,4 @@
+= Aufgaben zur Datenanalyse
+
+In diesem Repo finden sich Aufgaben, bei denen es darum geht, Funktionen zu schreiben,
+die für die Analyse von Daten nützlich sind.
