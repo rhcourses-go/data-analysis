@@ -26,16 +26,20 @@ func ExampleMedian() {
 	list1 := []int{10, 20, 30, 40, 50}
 	fmt.Println(Median(list1))
 
-	list2 := []int{50, 40, 30, 20, 10}
+	list2 := []int{50, 40, 30, 20}
 	fmt.Println(Median(list2))
 
 	list3 := []int{1, 17, 2, 42, 38, 3, 5}
 	fmt.Println(Median(list3))
 
+	list4 := []int{}
+	fmt.Println(Median(list4))
+
 	// Output:
 	// 30
-	// 30
+	// 35
 	// 5
+	// 0
 }
 
 func ExampleMode() {
