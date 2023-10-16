@@ -2,3 +2,105 @@
 
 In diesem Repo finden sich Aufgaben, bei denen es darum geht, Funktionen zu schreiben,
 die für die Analyse von Daten nützlich sind.
+
+== Struktur der Packages in diesem Repo
+
+Die Aufgaben sind in verschiedenen Packages organisiert:
+
+.*Package `intlists`*
+--
+Generische Funktionen zum Umgang mit Listen von `int`-Werten.
+Z.B. Bestimmung von Listeneigenschaften wie kleinster Wert oder Wertebereich.
+--
+
+.*Package `testseries`*
+--
+Funktionen zum Umgang mit Testreihen.
+
+Eine Testreihe ist eine Liste von Messergebnissen, hier `int`-Werte.
+Das Package enthält Funktionen zum Umgang mit Testreihen, z.B. zur Bestimmung
+von absoluten und relativen Häufigkeiten oder Kennwerten wie Median und Mittelwert.
+Die Funktionen aus dem Package `intlists` werden hier verwendet.
+--
+
+.*Package `dice`*
+--
+Enthält Funktionen zur Simulation von Würfelwürfen.
+
+Insbesondere liefert die Funktion `RollMany` eine Liste von Würfelergebnissen.
+Dies ist eine einfache Testreihe, die mit dem Package `testseries` analysiert werden kann.
+--
+
+.*Package `dice_main`*
+--
+Enthält ein Programm mit `main`-Funktion, das die Funktionen
+aus `dice` und `testseries` verwendet.
+
+Hier wird der Benutzer gefragt, wie viele Würfelwürfe mit wie vielen Würfeln
+durchgeführt werden sollen. Die Ergebnisse werden dann mit den Funktionen
+aus `testseries` analysiert und ausgegeben.
+--
+
+== Hinweise zur Bearbeitung der Aufgaben
+
+.*Geeignete Start-Aufgaben*
+--
+Für den Anfang sind die Aufgaben in `intlists` und `dice` geeignet.
+
+Das Package `intlists` hat gar keine Voraussetzungen.
+Die Funktionen hier sind mit Schleifen und Listen zu lösen und können
+als Wiederholung der Grundlagen dienen.
+
+Das Package `dice` verwendet Funktionen aus `math.rand`,
+hat ansonsten aber auch keine weiteren Voraussetzungen.
+Auch dieses Kapitel ist daher ein guter Einstieg,
+wobei man sich kurz mit der Dokumentation von `math.rand` vertraut machen sollte.
+--
+
+.*Fortgeschrittene Aufgaben*
+--
+Die Aufgaben in `testseries` und `dice_main` sind etwas fortgeschrittener.
+
+Um die Funktionen in `testseries`zu lösen, sollte man die Funktionen aus `intlists`
+verwenden. Diese müssen daher implementiert und ihre Verwendung verstanden werden.
+Wer direkt mit diesen Funktionen anfangen will, kann sich die Lösungen zu `intlists`
+in die Datei `intlists/intlists.go` kopieren.
+
+Die Aufgaben in `dice_main` erfordern die Funktionen aus `dice` und `testseries`.
+Daher sollten diese bereits gelöst sein oder ebenfalls die Lösungen kopiert werden.
+Die Aufgaben in `dice_main` sind nicht sehr kompliziert, wenn man die Verwendung der
+anderen Packages verstanden hat. Es geht dann i.W. darum, den Benutzer nach
+Eingaben zu fragen und die anderen Funktionen darauf anzuwenden.
+--
+
+.*Mögliche Erweiterungen*
+--
+Die Aufgaben in diesem Repo sind nur ein Anfang.
+Sie stellen dar, wie ein Datenanalyse-Package grundsätzlich aufgebaut sein kann
+und bieten einige Basisfunktionen.
+Wer hier weiter üben möchte, kann z.B. folgende Erweiterungen implementieren:
+
+Berechnen weiterer Kennwerte::
+  In `testseries` könnten noch viele weitere Kennwerte berechnet.
+  Z.B. die Varianz, die Standardabweichung, Terzile, Quartile, Quintile etc.
+
+Bessere Darstellung von Histogrammen::
+  Im Moment wird die absolute Häufigkeit im Histogramm einfach direkt in Form von
+  Sternen ausgegeben. Bei sehr großen Werten ist das nicht mehr sinnvoll,
+  da die Ausgabe dann zu breit für den Bildschirm wird.
+  Stattdessen könnte man z.B. eine Kompression des Bildes vornehmen,
+  also die Anzahl der Sterne durch einen Faktor teilen, damit die Ausgabe
+  immer auf den Bildschirm passt.
+
+Einlesen von Daten aus Textdateien::
+  Anstelle der Zufallszahlen aus den Würfelexperimenten können die Daten
+  auch aus Textdateien, z.B. im CSV-Format gelesen werden.
+  Hierzu ist es sinnvoll, ein neues Package `csv` zu erstellen,
+  das Funktionen zum Einlesen von CSV-Dateien enthält,
+  die ihre Ergebnisse als `int`-Liste zurückgeben.
+
+Analyse von `float64`-Werten::
+  Die gleichen Funktionen wie in `intlists` und `testseries` können auch für
+  `float64`-Werte geschrieben werden.
+  Dies bedeutet zunächst nur eine Aufdoppelung des Codes für verschiedene Typen.
+  Um diesen doppelten Code zu vermeiden, sind _Interfaces_ oder _Generics_ hilfreich.
