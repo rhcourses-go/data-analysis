@@ -56,6 +56,7 @@ func Mode(values []int) int {
 	if len(values) == 0 {
 		return 0
 	}
+	maxpos := 0
 	/* Hinweis:
 	   Bestimmen Sie den kleinsten Wert, der in der Liste vorkommt.
 	   Bestimmen Sie außerdem die Liste der absoluten Häufigkeiten und deren Maximum.
@@ -76,16 +77,12 @@ func Mode(values []int) int {
 	// Aus dieser Position kann der häufigste Wert bestimmt werden.
 	for i, f := range freq {
 		if f == max {
-			return i + minvalue
+			maxpos = i + minvalue
+			break
 		}
 	}
-
-	// Wenn diese Zeile erreicht wird, ist ein Fehler aufgetreten.
-	// Dieser Fall sollte nicht eintreten, da der häufigste Wert
-	// in der Liste der absoluten Häufigkeiten vorkommen muss.
-	// Damit der Compiler zufrieden ist, wird am Ende der Funktion 0 zurückgegeben.
 	// end::solution[]
-	return 0
+	return maxpos
 }
 
 // GeometricMean erwartet eine Liste mit ganzzahligen Werten.
