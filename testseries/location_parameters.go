@@ -123,10 +123,13 @@ func HarmonicMean(values []int) float64 {
 	   Bestimmen Sie die Summe der Kehrwerte der Werte.
 	   Teilen Sie die Anzahl der Werte durch diese Summe.
 	*/
+	// tag::solution[]
 	sum := 0.0
 	for _, v := range values {
 		sum += 1.0 / float64(v)
 	}
 
 	return float64(len(values)) / sum
+	// end::solution[]
+	// taskreturn: 0.0
 }
