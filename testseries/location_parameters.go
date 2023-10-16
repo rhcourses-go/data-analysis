@@ -14,7 +14,13 @@ func Average(values []int) float64 {
 	if len(values) == 0 {
 		return 0.0
 	}
+	/* Hinweis:
+	   Verwenden Sie die Funktion Sum aus dem Paket intlists.
+	*/
+	// tag::solution[]
 	return float64(intlists.Sum(values)) / float64(len(values))
+	// end::solution[]
+	// taskreturn: 0.0
 }
 
 // Median erwartet eine Liste mit ganzzahligen Werten.
@@ -24,14 +30,21 @@ func Median(values []int) int {
 	if len(values) == 0 {
 		return 0
 	}
-
 	sorted := make([]int, len(values))
 	copy(sorted, values)
-	slices.Sort(sorted)
 
+	/* Hinweis:
+	   Verwenden Sie die Funktion sort aus dem Paket slices, um die Liste zu sortieren.
+	   Die beiden Anweisungen oben kopieren Sie die Liste vorher, damit die ursprüngliche Liste nicht verändert wird.
+	   Bestimmen Sie dann das mittlere Element, oder, falls die Liste eine gerade Anzahl von Elementen hat,
+	   den Durchschnitt der beiden mittleren Elemente.
+	*/
+	// tag::solution[]
+	slices.Sort(sorted)
 	if len(sorted)%2 == 0 {
 		return (sorted[len(sorted)/2-1] + sorted[len(sorted)/2]) / 2
 	}
+	// end::solution[]
 	return sorted[len(sorted)/2]
 }
 
@@ -43,8 +56,15 @@ func Mode(values []int) int {
 	if len(values) == 0 {
 		return 0
 	}
+	/* Hinweis:
+	   Bestimmen Sie den kleinsten Wert, der in der Liste vorkommt.
+	   Bestimmen Sie außerdem die Liste der absoluten Häufigkeiten und deren Maximum.
+	   Dies ist der Wert, der am häufigsten vorkommt.
+	   Suchen Sie dann nach dessen Position in der Liste der absoluten Häufigkeiten.
+	*/
 
-	// Bestimme den kleinsten Wert, der in den Daten vorkommt.
+	// tag::solution[]
+	// Bestimme den kleinsten Wert in der Liste der Werte.
 	minvalue := intlists.Min(values)
 
 	// Bestimme, wie oft der häufigste Wert vorkommt.
@@ -61,6 +81,10 @@ func Mode(values []int) int {
 	}
 
 	// Wenn diese Zeile erreicht wird, ist ein Fehler aufgetreten.
+	// Dieser Fall sollte nicht eintreten, da der häufigste Wert
+	// in der Liste der absoluten Häufigkeiten vorkommen muss.
+	// Damit der Compiler zufrieden ist, wird am Ende der Funktion 0 zurückgegeben.
+	// end::solution[]
 	return 0
 }
 
@@ -74,11 +98,17 @@ func GeometricMean(values []int) float64 {
 	if len(values) == 0 {
 		return 0.0
 	}
-
+	/* Hinweis:
+	   Verwenden Sie die Funktion Product aus dem Paket intlists.
+	   Verwenden Sie die Funktion Pow aus dem Paket math.
+	*/
+	// tag::solution[]
 	product := float64(intlists.Product(values))
 	length := float64(len(values))
 
 	return math.Pow(product, 1.0/length)
+	// end::solution[]
+	// taskreturn: 0.0
 }
 
 // HarmonicMean erwartet eine Liste mit ganzzahligen Werten.
@@ -92,6 +122,10 @@ func HarmonicMean(values []int) float64 {
 		return 0.0
 	}
 
+	/* Hinweis:
+	   Bestimmen Sie die Summe der Kehrwerte der Werte.
+	   Teilen Sie die Anzahl der Werte durch diese Summe.
+	*/
 	sum := 0.0
 	for _, v := range values {
 		sum += 1.0 / float64(v)

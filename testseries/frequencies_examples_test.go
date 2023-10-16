@@ -18,18 +18,6 @@ func ExampleAbsoluteFrequencies() {
 	// [2 0 2 1 0 1]
 }
 
-func ExampleValueCount() {
-	absFreqs1 := []int{3, 2, 1, 2, 2, 0, 1}
-	fmt.Println(ValueCount(absFreqs1))
-
-	absFreqs2 := []int{2, 0, 2, 1, 0, 1}
-	fmt.Println(ValueCount(absFreqs2))
-
-	// Output:
-	// 11
-	// 6
-}
-
 func ExampleRelativeFrequencies() {
 	absFreqs1 := []int{3, 2, 1, 2, 2, 0, 1}
 	// Value:    1 |    2 |    3 |    4 |    5 |    6 |    7
